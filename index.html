@@ -8,58 +8,114 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="landing.css">
 </head>
-<body>
+<body class="lp">
 
-<header class="topbar">
-  <a class="brand-logo" href="index.html" style="text-decoration:none">
-    <span class="brand-mark"><img src="assets/civicfix-logo.svg" alt="CivicFix logo"></span>
-    <span>CivicFix</span>
-  </a>
-  <div class="topbar-links">
-    <button type="button" class="btn btn-primary" id="openLoginModalBtn">&#128100; Sign In / Log In</button>
+<!-- FLOATING PILL NAVBAR -->
+<nav class="lp-nav">
+  <a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt="CivicFix logo"><span>CivicFix</span></a>
+  <div class="lp-links">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#faq">FAQ</a>
   </div>
-</header>
+  <button type="button" class="lp-btn blue sm" id="openLoginModalBtn">Login</button>
+</nav>
 
-<main class="page">
-  <!-- HERO ABOUT SECTION -->
-  <section class="hero" style="text-align: center; padding: 3.5rem 2rem; margin-bottom: 2rem;">
-    <div style="max-width: 750px; margin: 0 auto;">
-      <span class="pill" style="margin-bottom: 1rem; display: inline-block;">This is CivicFix</span>
-      <h1 style="font-size: 2.5rem; color: #fff; margin-bottom: 1rem;">Got any problems? Just snap it and post!</h1>
-      <p style="font-size: 1.1rem; opacity: 0.95; margin-bottom: 2rem;">
-        Report potholes, drainage overflows, streetlights out, and urban hazards instantly. We bridge the gap between citizens and municipal repair crews with live map pinning and transparent status tracking.
-      </p>
-      <div class="row" style="justify-content: center; gap: 1rem;">
-        <button type="button" class="btn btn-primary btn-lg" id="heroSignInBtn" style="background: #fff; color: var(--brand-700);">
-          Get Started &amp; Sign In
-        </button>
+<main>
+  <!-- HERO -->
+  <section class="lp-hero">
+    <div class="lp-wrap">
+      <h1>Spot a problem on your street.<span>See it get fixed.</span></h1>
+      <p>Snap a photo, drop a pin, and follow every report from New to Closed. CivicFix connects citizens with municipal repair crews.</p>
+      <div class="lp-cta">
+        <button type="button" class="lp-btn blue" id="heroSignInBtn">Report an issue</button>
+        <a href="#how" class="lp-btn soft">See how it works</a>
+      </div>
+      <div class="lp-trust">
+        <span><i>✓</i>Live GPS map pinning</span>
+        <span><i>✓</i>Transparent status tracking</span>
+      </div>
+
+      <!-- product preview -->
+      <div class="lp-stage">
+        <div class="lp-win">
+          <div class="lp-side"><b>◎ Dashboard</b><span>My reports</span><span>Map view</span><span>Notifications</span></div>
+          <div class="lp-main">
+            <h4>Overview <small>Sample ward · Last 30 days</small></h4>
+            <div class="lp-grid">
+              <div class="lp-map"></div>
+              <div class="lp-list">
+                <div class="lp-row">Pothole on MG Road <span class="chip n">New</span></div>
+                <div class="lp-row">Streetlight out, Sector 4 <span class="chip a">Assigned</span></div>
+                <div class="lp-row">Drain overflow near market <span class="chip p">In Progress</span></div>
+                <div class="lp-row">Broken footpath tile <span class="chip c">Closed</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <h2 style="text-align: center; margin-bottom: 1.5rem;">What We Do</h2>
-  <div class="stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 2.5rem;">
-    <div class="stat" style="text-align: center; padding: 1.5rem 1rem;">
-      <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📸</div>
-      <div class="k" style="font-size: 1rem; color: var(--ink); margin-bottom: 0.3rem;">1. Snap It</div>
-      <div class="d">Take a photo of any civic issue straight from your phone camera or gallery.</div>
+  <section class="lp-sec" id="how">
+    <div class="lp-wrap">
+      <div class="lp-eyebrow">How it works</div>
+      <h2>From snapshot to solved.</h2>
+      <div class="lp-cards">
+        <div class="lp-card"><div class="art b">📸</div><small>Step 1</small><h3>Snap it</h3><p>Take a photo of any civic issue straight from your phone camera or gallery.</p></div>
+        <div class="lp-card"><div class="art y">📍</div><small>Step 2</small><h3>Post &amp; pin</h3><p>Drop an exact GPS map pin so municipal field crews know precisely where to go.</p></div>
+        <div class="lp-card"><div class="art g">⚡</div><small>Step 3</small><h3>Track to fix</h3><p>Follow ticket updates live from New to Assigned, In Progress, and Closed.</p></div>
+      </div>
     </div>
-    <div class="stat violet" style="text-align: center; padding: 1.5rem 1rem;">
-      <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📍</div>
-      <div class="k" style="font-size: 1rem; color: var(--ink); margin-bottom: 0.3rem;">2. Post &amp; Pin</div>
-      <div class="d">Drop an exact GPS map pin so municipal field crews know precisely where to go.</div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="lp-sec" id="features">
+    <div class="lp-wrap">
+      <div class="lp-eyebrow">Features</div>
+      <h2>Built for your whole neighbourhood.</h2>
+      <div class="lp-feat">
+        <div class="box"><span class="tag">CITIZENS</span><h3>Report in seconds</h3><p>Potholes, drainage overflows, streetlights and urban hazards — all in one quick form.</p></div>
+        <div class="box"><span class="tag">MUNICIPAL CREWS</span><h3>Know where to go</h3><p>Every ticket arrives with a photo and an exact location, so crews can act faster.</p></div>
+        <div class="box"><span class="tag">TRANSPARENCY</span><h3>See every update</h3><p>Status changes are visible to everyone, so no report gets lost along the way.</p></div>
+      </div>
     </div>
-    <div class="stat ok" style="text-align: center; padding: 1.5rem 1rem;">
-      <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">⚡</div>
-      <div class="k" style="font-size: 1rem; color: var(--ink); margin-bottom: 0.3rem;">3. Track to Fix</div>
-      <div class="d">Follow ticket status updates live from New to Assigned, In Progress, and Closed.</div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="lp-sec" id="faq">
+    <div class="lp-wrap">
+      <div class="lp-eyebrow">FAQ</div>
+      <h2>Good questions. Clear answers.</h2>
+      <div class="lp-faq">
+        <details open><summary>How do I report an issue?</summary><p>Sign in, snap a photo, drop a pin on the map and submit. Your report goes straight to the municipal team.</p></details>
+        <details><summary>Can I track my report?</summary><p>Yes. Each report moves through New, Assigned, In Progress and Closed, and you can follow it from your dashboard.</p></details>
+        <details><summary>Do I need an account?</summary><p>You can continue with Google or use an email and password. It only takes a moment.</p></details>
+      </div>
+
+      <div class="lp-band">
+        <small>SMALL REPORT. BIG DIFFERENCE.</small>
+        <h2>Your next fix starts with a photo.</h2>
+        <button type="button" class="lp-btn" id="ctaSignInBtn">Get started free</button>
+      </div>
+
+      <footer>
+        <div class="lp-foot">
+          <div><a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt=""><span>CivicFix</span></a>
+            <p style="color:var(--lp-mute);margin-top:14px">A cleaner street.<br>From first report to final fix.</p></div>
+          <div class="col"><h5>PRODUCT</h5><a href="#how">How it works</a><a href="#features">Features</a><a href="#faq">FAQ</a></div>
+          <div class="col"><h5>RESOURCES</h5><a href="about.html">About</a><a href="#" class="legal">Support</a></div>
+        </div>
+        <div class="lp-copy"><span>© 2026 CivicFix</span><span><a href="#" class="legal">Privacy</a> &nbsp; <a href="#" class="legal">Terms of Service</a></span></div>
+      </footer>
     </div>
-  </div>
+  </section>
 </main>
 
-<!-- SIGN IN MODAL -->
+<!-- SIGN IN MODAL (unchanged) -->
 <div class="modal" id="loginModal">
   <div class="modal-card" style="max-width: 440px;">
     <div class="modal-head">
@@ -71,8 +127,6 @@
     </div>
     <div class="modal-body">
       <div class="alert" id="loginAlert"></div>
-
-      <!-- Primary: Google sign-in (Firebase Auth) -->
       <button class="auth-google" id="googleBtn" type="button" style="width:100%; margin-bottom: 1rem;">
         <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
           <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -80,12 +134,9 @@
           <path fill="#FBBC05" d="M10.53 28.59A14.5 14.5 0 0 1 9.77 24c0-1.6.27-3.14.76-4.59l-7.98-6.19A23.94 23.94 0 0 0 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
           <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.46-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
         </svg>
-        Continue with Google
+Continue with Google
       </button>
-
       <div class="auth-divider">OR</div>
-
-      <!-- Alternative: email + password (Firebase Auth) -->
       <form id="emailForm" novalidate>
         <div class="field hidden" id="fName">
           <label for="fullName">Full name</label>
@@ -104,11 +155,9 @@
         <div class="link-row"><a href="#" id="forgotLink" class="small">Forgot password?</a></div>
         <button class="btn btn-primary btn-lg btn-block" type="submit" id="signInBtn">Sign in</button>
       </form>
-
       <p class="center small muted" style="margin-top:1.1rem">
         <span id="switchText">New to CivicFix?</span> <a href="#" id="createLink">Create an account</a>
       </p>
-
       <div class="auth-legal">
         <a href="#" class="legal">Terms of Service</a>
         <a href="#" class="legal">Privacy Policy</a>
@@ -119,39 +168,26 @@
 </div>
 
 <div class="toast-wrap"></div>
+
 <script src="config.js"></script>
 <script src="app.js"></script>
 <script>
 (function () {
-  var mode = "signin";           // "signin" | "signup"
+  var mode = "signin"; // "signin" | "signup"
   var googleBtn = CF.$("#googleBtn");
   var googleHtml = googleBtn.innerHTML;
   var signInBtn = CF.$("#signInBtn");
 
-  // landing page => open the sign-in modal
   CF.wireModals();
   function openLogin() { CF.openModal("loginModal"); }
   CF.$("#openLoginModalBtn").addEventListener("click", openLogin);
   CF.$("#heroSignInBtn").addEventListener("click", openLogin);
+  CF.$("#ctaSignInBtn").addEventListener("click", openLogin);
 
-  // preload firebase sdk so the popup opens inside the click gesture
   CF.init().catch(function () {});
 
-  /* -------- theme toggle handler -------- */
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "light");
 
-  const themeBtn = CF.$("#themeToggleBtn");
-  if (themeBtn) {
-    themeBtn.addEventListener("click", function () {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
-  }
-
-  /* -------- helpers -------- */
   function showAlert(msg) {
     var a = CF.$("#loginAlert");
     if (!msg) { a.classList.remove("show"); return; }
@@ -176,13 +212,12 @@
     if (msg) { showAlert(msg); }
   }
 
-  /* -------- sign-in / sign-up mode switch -------- */
   function setMode(next) {
     mode = next;
     var up = mode === "signup";
     CF.$("#authTitle").textContent = up ? "Create your account" : "Welcome back";
     CF.$("#authSub").textContent = up ? "Join CivicFix to report and track issues in your area."
-                                      : "Sign in to report an issue or manage your ward.";
+      : "Sign in to report an issue or manage your ward.";
     CF.$("#fName").classList.toggle("hidden", !up);
     CF.$("#password").setAttribute("autocomplete", up ? "new-password" : "current-password");
     CF.$("#forgotLink").classList.toggle("hidden", up);
@@ -196,7 +231,6 @@
     setMode(mode === "signin" ? "signup" : "signin");
   });
 
-  /* -------- Google sign-in (Firebase popup) -------- */
   googleBtn.addEventListener("click", function () {
     showAlert("");
     googleBtn.disabled = true;
@@ -204,14 +238,12 @@
     CF.signInGoogle().then(go).catch(fail);
   });
 
-  /* -------- email + password -------- */
   CF.$("#emailForm").addEventListener("submit", function (e) {
     e.preventDefault();
     var email = CF.$("#email").value.trim();
-    var pass  = CF.$("#password").value;
+    var pass = CF.$("#password").value;
     var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    var okPass  = pass.length >= 6;
-
+    var okPass = pass.length >= 6;
     CF.$("#fEmail").classList.toggle("invalid", !okEmail);
     CF.$("#fPass").classList.toggle("invalid", !okPass);
     if (!okEmail || !okPass) {
@@ -219,7 +251,6 @@
       return;
     }
     showAlert("");
-
     signInBtn.disabled = true;
     signInBtn.innerHTML = '<span class="spinner"></span> ' + (mode === "signup" ? "Creating account\u2026" : "Signing in\u2026");
     var job = mode === "signup"
@@ -228,7 +259,6 @@
     job.then(go).catch(fail);
   });
 
-  /* -------- forgot password (Firebase reset email) -------- */
   CF.$("#forgotLink").addEventListener("click", function (e) {
     e.preventDefault();
     var email = CF.$("#email").value.trim();
@@ -243,18 +273,13 @@
       .catch(function (err) { showAlert(CF.authMessage(err)); });
   });
 
-  /* -------- placeholder links -------- */
-  [[".legal", "Legal", "Terms, privacy and support pages are placeholders in this build."]]
-  .forEach(function (pair) {
-    CF.$$(pair[0]).forEach(function (el) {
-      el.addEventListener("click", function (e) {
-        e.preventDefault();
-        CF.toast("", pair[1], pair[2]);
-      });
+  CF.$$(".legal").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      CF.toast("", "Legal", "Terms, privacy and support pages are placeholders in this build.");
     });
   });
 
-  /* -------- already signed in? skip the form -------- */
   if (!CF.firebaseConfigured()) {
     showAlert("Firebase is not configured yet. Fill in config.js with your project's web config.");
     return;
