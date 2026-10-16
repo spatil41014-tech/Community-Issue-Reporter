@@ -77,3 +77,12 @@ a{text-decoration:none;color:inherit}
 .lp-steps .ic{box-shadow:0 8px 20px rgba(31,111,235,.18)}
 [data-theme="dark"] .lp-art svg{filter:brightness(.82) saturate(1.05)}
 [data-theme="dark"] .ic.b{background:#1d3358}[data-theme="dark"] .ic.g{background:#17392d}[data-theme="dark"] .ic.o{background:#40321a}[data-theme="dark"] .ic.p{background:#2d2650}
+
+/* slide-in animation: cards enter from the sides (alternating), triggered on scroll */
+.rv{opacity:0;translate:var(--rv-x,0) 0;
+  transition:translate .8s cubic-bezier(.2,.7,.2,1) var(--d,0s),opacity .8s ease var(--d,0s),transform .25s,box-shadow .25s}
+.rv-l{--rv-x:-80px}
+.rv-r{--rv-x:80px}
+.rv.in{opacity:1;translate:0 0}
+@media(max-width:560px){.rv-l{--rv-x:-40px}.rv-r{--rv-x:40px}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;translate:none;transition:none}}

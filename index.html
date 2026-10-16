@@ -29,7 +29,7 @@
 <main id="top">
   <!-- HERO -->
   <section class="lp-hero">
-    <div class="lp-copy">
+    <div class="lp-copy rv rv-l">
       <h1>Stronger Communities<br>Start with <em>You</em></h1>
       <p>Report local issues, track progress, and help make your community a better place.</p>
       <div class="lp-cta">
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div class="lp-art">
+    <div class="lp-art rv rv-r">
       <div class="lp-bubble">Clean<br>Greener<br>Safer</div>
       <svg viewBox="0 0 560 420" role="img" aria-label="Phone showing a map of reported issues in a green city">
         <defs>
@@ -301,6 +301,18 @@ Continue with Google
   var c=document.getElementById("createLink");
   document.getElementById("ctaSignInBtn").addEventListener("click",function(){ if(c.textContent.indexOf("Create")>-1){c.click();} });
   document.getElementById("bandBtn").addEventListener("click",function(){ document.getElementById("heroSignInBtn").click(); });
+})();
+</script>
+<script>
+(function () {
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(function (e) { io.observe(e); });
 })();
 </script>
 </body>
