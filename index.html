@@ -13,6 +13,7 @@
 <body class="lp">
 
 <div class="lp-shell">
+<i class="lp-orb o1"></i><i class="lp-orb o2"></i>
 <!-- NAVBAR -->
 <nav class="lp-nav">
   <a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt="CivicFix logo"><span>Community Issue Reporter</span></a>
@@ -85,13 +86,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="lp-stats">
-    <div class="stat"><span class="ic b">📋</span><div><b data-n="128">128</b><small>Total Issues Reported</small></div></div>
-    <div class="stat"><span class="ic g">✔</span><div><b data-n="86">86</b><small>Resolved Issues</small></div></div>
-    <div class="stat"><span class="ic o">⏳</span><div><b data-n="24">24</b><small>In Progress</small></div></div>
-    <div class="stat"><span class="ic p">👥</span><div><b data-n="540">540</b><small>Active Members</small></div></div>
-  </section>
 
   <!-- HOW IT WORKS -->
   <section class="lp-how" id="how">
@@ -182,6 +176,7 @@ Continue with Google
 
 <div class="toast-wrap"></div>
 
+<script src="theme-toggle.js"></script>
 <script src="config.js"></script>
 <script src="app.js"></script>
 <script>
@@ -306,11 +301,6 @@ Continue with Google
   var c=document.getElementById("createLink");
   document.getElementById("ctaSignInBtn").addEventListener("click",function(){ if(c.textContent.indexOf("Create")>-1){c.click();} });
   document.getElementById("bandBtn").addEventListener("click",function(){ document.getElementById("heroSignInBtn").click(); });
-  document.querySelectorAll("[data-n]").forEach(function(el){
-    var end=+el.dataset.n,t0=null;
-    function step(t){t0=t0||t;var p=Math.min((t-t0)/1200,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
-    requestAnimationFrame(step);
-  });
 })();
 </script>
 </body>
