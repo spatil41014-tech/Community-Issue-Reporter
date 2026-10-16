@@ -82,11 +82,11 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem" class="ov-grid">
           <div class="card">
             <div class="card-head"><h2>Reports by category</h2><span class="pill" id="ovTotal">0 total</span></div>
-            <div class="card-pad"><div class="bars" id="barsCat"></div></div>
+            <div class="card-pad"><div id="pieCat"></div></div>
           </div>
           <div class="card">
-            <div class="card-head"><h2>Status breakdown</h2><span class="pill">click a bar to filter</span></div>
-            <div class="card-pad"><div class="bars" id="barsStatus"></div></div>
+            <div class="card-head"><h2>Status breakdown</h2><span class="pill">click a slice to filter</span></div>
+            <div class="card-pad"><div id="pieStatus"></div></div>
           </div>
         </div>
 
@@ -543,6 +543,64 @@
     var t = new Date(i.createdAt).getTime();
     return isNaN(t) || (Date.now() - t) <= rangeDays * 86400000;
   }
+  /* ---------------- donut chart ---------------- */
+  function shortText(t, n) { return t.length > n ? t.slice(0, n - 1) + "\u2026" : t; }
+  function donutHtml(rows, attr, active, unit) {
+    var R = 46, C = 2 * Math.PI * R;
+    var total = rows.reduce(function (a, r) { return a + r.n; }, 0);
+    var shown = rows.filter(function (r) { return r.n > 0; });
+    var gap = shown.length > 1 ? 2.2 : 0;
+    var cum = 0, segs = "";
+    shown.forEach(function (r) {
+      var len = (r.n / total) * C;
+      segs += '<circle class="seg pie-hit' + (active === r.key ? " sel" : "") + '" cx="60" cy="60" r="' + R + '" ' + attr + '="' + CF.escapeHtml(r.key) +
+        '" data-key="' + CF.escapeHtml(r.key) + '" data-n="' + r.n + '" data-name="' + CF.escapeHtml(r.name) + '" stroke="' + r.color +
+        '" stroke-dasharray="' + Math.max(len - gap, 0.01).toFixed(2) + " " + (C - Math.max(len - gap, 0.01)).toFixed(2) +
+        '" stroke-dashoffset="' + (-cum).toFixed(2) + '" transform="rotate(-90 60 60)"><title>' +
+        CF.escapeHtml(r.name) + ": " + r.n + "</title></circle>";
+      cum += len;
+    });
+    var svg = '<svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Chart of ' + unit + '">' +
+      '<circle class="donut-track" cx="60" cy="60" r="' + R + '"></circle>' + segs +
+      '<text class="donut-n" x="60" y="62" data-total="' + total + '">' + total + "</text>" +
+      '<text class="donut-l" x="60" y="76" data-unit="' + unit + '">' + (total ? unit : "no " + unit) + "</text></svg>";
+    var legend = '<div class="legend">' + rows.map(function (r) {
+      return '<button type="button" class="legend-row pie-hit' + (active === r.key ? " on" : "") + (r.n ? "" : " zero") + '" ' + attr + '="' + CF.escapeHtml(r.key) +
+        '" data-key="' + CF.escapeHtml(r.key) + '" data-n="' + r.n + '" data-name="' + CF.escapeHtml(r.name) + '" title="Show ' + CF.escapeHtml(r.name) + ' tickets">' +
+        '<i class="dot" style="background:' + r.color + '"></i><span class="lg-name">' + CF.escapeHtml(r.label) + "</span>" +
+        '<span class="lg-n"><b>' + r.n + "</b><small>" + (total ? Math.round(r.n / total * 100) + "%" : "0%") + "</small></span></button>";
+    }).join("") + "</div>";
+    return '<div class="donut-wrap">' + svg + legend + "</div>";
+  }
+  function donutCenter(wrap, n, name) {
+    var nn = wrap.querySelector(".donut-n"), ll = wrap.querySelector(".donut-l");
+    nn.textContent = n;
+    ll.textContent = shortText(name, 15);
+  }
+  function donutReset(wrap) {
+    var nn = wrap.querySelector(".donut-n"), ll = wrap.querySelector(".donut-l");
+    var total = nn.getAttribute("data-total");
+    nn.textContent = total;
+    ll.textContent = total === "0" ? "no " + ll.getAttribute("data-unit") : ll.getAttribute("data-unit");
+    wrap.classList.remove("hovering");
+    wrap.querySelectorAll(".seg.hl").forEach(function (x) { x.classList.remove("hl"); });
+  }
+  var ovView = document.getElementById("view-overview");
+  ovView.addEventListener("mouseover", function (e) {
+    var el = e.target.closest(".pie-hit");
+    if (!el) { return; }
+    var wrap = el.closest(".donut-wrap");
+    donutCenter(wrap, el.getAttribute("data-n"), el.getAttribute("data-name"));
+    wrap.classList.add("hovering");
+    wrap.querySelectorAll(".seg").forEach(function (sg) { sg.classList.toggle("hl", sg.getAttribute("data-key") === el.getAttribute("data-key")); });
+  });
+  ovView.addEventListener("mouseout", function (e) {
+    var el = e.target.closest(".pie-hit");
+    if (!el) { return; }
+    var to = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(".pie-hit") : null;
+    if (!to) { donutReset(el.closest(".donut-wrap")); }
+  });
+
   function renderOverview() {
     var all = issues.filter(inRange);
     var open = all.filter(function (i) { return i.status !== "Closed"; });
@@ -554,34 +612,23 @@
     CF.$("#oClosed").textContent = all.filter(function (i) { return i.status === "Closed"; }).length;
     CF.$("#ovTotal").textContent = all.length + " total";
 
-    var maxCat = 1;
-    var catRows = CF.categories().map(function (c) {
-      var n = all.filter(function (i) { return i.category === c.id; }).length;
-      if (n > maxCat) { maxCat = n; }
-      return { id: c.id, label: c.icon + " " + c.label, plain: c.label, n: n };
+    /* ---- donut charts (click a slice or a legend row to drill down) ---- */
+    var PALETTE = ["#3b82f6", "#f59e0b", "#10b981", "#8b5cf6", "#ef4444", "#06b6d4", "#ec4899", "#84cc16", "#f97316", "#64748b"];
+    var catRows = CF.categories().map(function (c, idx) {
+      return {
+        key: c.id, name: c.label, label: c.icon + " " + c.label, color: PALETTE[idx % PALETTE.length],
+        n: all.filter(function (i) { return i.category === c.id; }).length
+      };
     });
-    CF.$("#barsCat").innerHTML = catRows.map(function (r) {
-      return '<button type="button" class="bar-row clickable' + (catFilter === r.id ? " on" : "") + '" data-cat="' + CF.escapeHtml(r.id) +
-        '" title="Show ' + CF.escapeHtml(r.plain) + ' tickets"><span>' + r.label + "</span>" +
-        '<span class="bar-track"><span class="bar-fill" style="width:' +
-        Math.round((r.n / maxCat) * 100) + '%"></span></span>' +
-        "<span><b>" + r.n + "</b></span></button>";
-    }).join("");
+    CF.$("#pieCat").innerHTML = donutHtml(catRows, "data-cat", catFilter, "reports");
 
-    var colors = { "New": "#b45309", "Assigned": "#6d28d9", "In Progress": "#1d4ed8", "Closed": "#0f9d58" };
-    var maxSt = 1;
-    var stRows = CF.STATUSES.map(function (s) {
-      var n = all.filter(function (i) { return i.status === s; }).length;
-      if (n > maxSt) { maxSt = n; }
-      return { label: s, n: n, color: colors[s] };
+    var stRows = CF.STATUSES.map(function (st) {
+      return {
+        key: st, name: st, label: st, color: CF.STATUS_COLORS[st],
+        n: all.filter(function (i) { return i.status === st; }).length
+      };
     });
-    CF.$("#barsStatus").innerHTML = stRows.map(function (r) {
-      return '<button type="button" class="bar-row clickable' + (statusFilter === r.label ? " on" : "") + '" data-status="' + CF.escapeHtml(r.label) +
-        '" title="Show ' + CF.escapeHtml(r.label) + ' tickets"><span>' + r.label + "</span>" +
-        '<span class="bar-track"><span class="bar-fill" style="width:' +
-        Math.round((r.n / maxSt) * 100) + "%;background:" + r.color + '"></span></span>' +
-        "<span><b>" + r.n + "</b></span></button>";
-    }).join("");
+    CF.$("#pieStatus").innerHTML = donutHtml(stRows, "data-status", statusFilter, "tickets");
 
     var urgent = all.filter(function (i) { return i.priority === "High" && i.status !== "Closed"; });
     CF.$("#urgentList").innerHTML = urgent.length
@@ -797,10 +844,10 @@
       if (g === "teams") { show("teams"); } else { goIssues({ status: g }); }
       return;
     }
-    var bar = e.target.closest(".bar-row[data-status]");
-    if (bar) { goIssues({ status: bar.getAttribute("data-status") }); return; }
-    bar = e.target.closest(".bar-row[data-cat]");
-    if (bar) { goIssues({ cat: bar.getAttribute("data-cat") }); return; }
+    var hit = e.target.closest(".pie-hit[data-status]");
+    if (hit) { goIssues({ status: hit.getAttribute("data-status") }); return; }
+    hit = e.target.closest(".pie-hit[data-cat]");
+    if (hit) { goIssues({ cat: hit.getAttribute("data-cat") }); return; }
     if (e.target.closest("#urgentAll")) { goIssues({ status: "open" }); CF.$("#adminSearch").focus(); return; }
     var row = e.target.closest("[data-open-map]");
     if (row) { openMapModal(row.getAttribute("data-open-map")); }
