@@ -1,319 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CivicFix — Welcome & About</title>
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Community Issue Reporter</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8D%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="landing.css">
+<script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("theme")||"dark")}catch(e){}</script>
 </head>
-<body class="lp">
-
-<div class="lp-shell">
-<i class="lp-orb o1"></i><i class="lp-orb o2"></i>
-<!-- NAVBAR -->
-<nav class="lp-nav">
-  <a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt="CivicFix logo"><span>Community Issue Reporter</span></a>
-  <div class="lp-links">
-    <a href="#top">Home</a><a href="about.html">About</a><a href="#features">Features</a><a href="#how">How It Works</a><a href="#contact">Contact</a>
-  </div>
-  <div class="lp-auth">
-    <button type="button" class="lp-btn line sm" id="openLoginModalBtn">Login</button>
-    <button type="button" class="lp-btn blue sm" id="ctaSignInBtn">Sign Up</button>
-  </div>
+<body id="top">
+<nav>
+  <a class="brand" href="#top"><span class="logo">📍</span>Community Issue Reporter</a>
+  <div class="links"><a href="#top">Home</a><a href="#how">About</a><a href="#how">Features</a><a href="#how">How It Works</a><a href="#how">Contact</a></div>
+  <div class="acts"><button class="btn btn-login" data-open="signin">Login</button><button class="btn shine pulse" data-open="signup">Sign Up</button></div>
 </nav>
 
-<main id="top">
-  <!-- HERO -->
-  <section class="lp-hero">
-    <div class="lp-copy rv rv-l">
-      <h1>Stronger Communities<br>Start with <em>You</em></h1>
-      <p>Report local issues, track progress, and help make your community a better place.</p>
-      <div class="lp-cta">
-        <button type="button" class="lp-btn blue" id="heroSignInBtn">Report an Issue <span>→</span></button>
-        <a href="#how" class="lp-btn white">Learn More</a>
-      </div>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1><span class="w" style="--i:0">Stronger</span><br><span class="w" style="--i:1">Communities</span><br><span class="w" style="--i:2">Start</span> <span class="w" style="--i:3">with</span> <span class="y w" style="--i:4">You</span></h1>
+      <p class="sub">Report local issues, track progress, and help make your community a better place.</p>
+      <div class="cta"><button class="btn shine" data-open="signin">Report an Issue →</button><a class="btn btn-ghost" href="#how">Learn More</a></div>
     </div>
-
-    <div class="lp-art rv rv-r">
-      <div class="lp-bubble">Clean<br>Greener<br>Safer</div>
-      <svg viewBox="0 0 560 420" role="img" aria-label="Phone showing a map of reported issues in a green city">
+    <div class="art" id="art">
+      <svg viewBox="0 0 680 510" aria-label="Phone map with issue pins over a city skyline">
         <defs>
-          <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ec5f5"/><stop offset="1" stop-color="#e3f2fd"/></linearGradient>
-          <linearGradient id="bd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b9bd5"/><stop offset="1" stop-color="#bcdcf7"/></linearGradient>
-          <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fd0f0"/><stop offset="1" stop-color="#3b9ad9"/></linearGradient>
-          <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5cc06a"/><stop offset="1" stop-color="#2e8b4a"/></linearGradient>
-          <pattern id="win" width="9" height="11" patternUnits="userSpaceOnUse"><rect x="1" y="2" width="6" height="6" fill="#fff" opacity=".4"/></pattern>
-          <path id="pin" d="M0 0C-9-11-11-15-11-21a11 11 0 0 1 22 0C11-15 9-11 0 0z"/>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78a4cf"/><stop offset="1" stop-color="#a6c3de"/></linearGradient>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6aa6d6"/><stop offset="1" stop-color="#3b82b8"/></linearGradient>
+          <pattern id="win" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#5d8cbf"/><rect x="2" y="2" width="7" height="7" fill="#86addb"/></pattern>
+          <path id="pp" d="M0-30C-14-30-21-20-21-10c0 14 21 32 21 32s21-18 21-32c0-10-7-20-21-20z"/>
         </defs>
-        <rect width="560" height="420" rx="24" fill="url(#bg)"/>
-        <circle cx="90" cy="70" r="60" fill="#fff" opacity=".35"/><circle cx="450" cy="50" r="40" fill="#fff" opacity=".3"/>
-        <!-- skyline -->
-        <g fill="url(#bd)">
-          <rect x="40" y="200" width="42" height="130"/><rect x="92" y="160" width="50" height="170"/>
-          <rect x="150" y="110" width="46" height="220"/><rect x="204" y="180" width="40" height="150"/>
-          <rect x="250" y="140" width="36" height="190"/><rect x="340" y="190" width="60" height="140"/>
-        </g>
-        <g fill="url(#win)"><rect x="40" y="200" width="42" height="130"/><rect x="92" y="160" width="50" height="170"/><rect x="150" y="110" width="46" height="220"/><rect x="204" y="180" width="40" height="150"/><rect x="250" y="140" width="36" height="190"/></g>
-        <!-- lake + ground -->
-        <path d="M0 318C90 300 180 332 280 318S470 300 560 322V420H0z" fill="url(#lake)"/>
-        <path d="M0 322C100 312 190 338 290 326S480 310 560 330" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none"/>
-        <!-- trees -->
-        <g>
-          <rect x="454" y="262" width="8" height="60" fill="#7a5230"/><circle cx="458" cy="238" r="38" fill="url(#tr)"/><circle cx="486" cy="262" r="28" fill="#3fa356"/>
-          <rect x="508" y="280" width="7" height="44" fill="#7a5230"/><circle cx="511" cy="262" r="30" fill="url(#tr)"/>
-          <rect x="22" y="290" width="7" height="34" fill="#7a5230"/><circle cx="26" cy="276" r="24" fill="url(#tr)"/>
-        </g>
-        <!-- phone -->
-        <g transform="rotate(-4 380 215)">
-          <rect x="296" y="34" width="176" height="340" rx="28" fill="#0f172a"/>
-          <rect x="304" y="42" width="160" height="324" rx="22" fill="#eef6ea"/>
-          <rect x="350" y="46" width="68" height="9" rx="4.5" fill="#0f172a"/>
-          <g clip-path="inset(0 round 22px)">
-            <path d="M304 150C350 170 380 130 464 170V230C400 200 350 250 304 220z" fill="#bfe3f7"/>
-            <rect x="320" y="70" width="46" height="40" rx="6" fill="#cfe9c3"/><rect x="400" y="250" width="50" height="46" rx="6" fill="#cfe9c3"/><rect x="318" y="270" width="52" height="60" rx="6" fill="#d9ecd0"/>
-            <g stroke="#fff" stroke-width="6" fill="none"><path d="M304 100H464M304 300H464M380 42V366M330 42V366M430 42V366"/></g>
+        <rect width="680" height="510" fill="url(#sky)"/>
+        <g class="cloud"><circle cx="110" cy="85" r="73" fill="#b6cae1" opacity=".75"/></g>
+        <g><rect x="50" y="250" width="50" height="130" fill="url(#win)"/><rect x="112" y="190" width="62" height="190" fill="url(#win)"/><rect x="186" y="132" width="56" height="250" fill="url(#win)"/><rect x="252" y="222" width="48" height="160" fill="url(#win)"/><rect x="308" y="168" width="46" height="210" fill="url(#win)"/></g>
+        <rect y="385" width="680" height="125" fill="url(#sea)"/>
+        <path class="wave" d="M-40 392q80-14 160 0t160 0 160 0 160 0 160 0" fill="none" stroke="#cfe3f3" stroke-width="3" opacity=".8"/>
+        <g><rect x="24" y="360" width="8" height="40" fill="#7a4a24"/><circle cx="28" cy="335" r="30" fill="#2e8b3a"/></g>
+        <g><rect x="622" y="370" width="8" height="48" fill="#7a4a24"/><circle cx="626" cy="335" r="36" fill="#2e8b3a"/></g>
+        <g class="phone">
+          <g transform="rotate(4 450 250)">
+            <rect x="345" y="40" width="215" height="400" rx="34" fill="#0d1620"/>
+            <rect x="357" y="58" width="191" height="364" rx="22" fill="#c9d9b8"/>
+            <rect x="415" y="46" width="72" height="9" rx="4.5" fill="#26323f"/>
+            <path d="M357 190q60-30 100 5t91-20v70q-55 25-95-5t-96 15z" fill="#a9c4d8"/>
+            <g stroke="#f3f6ee" stroke-width="5" fill="none"><path d="M395 58v364M475 58v364M357 140h191M357 300h191"/></g>
+            <g fill="#aecb9e"><rect x="365" y="76" width="42" height="42" rx="6"/><rect x="490" y="330" width="48" height="52" rx="6"/></g>
+            <g transform="scale(.62)">
+              <g transform="translate(790 275)"><g class="pin" style="--k:0"><use href="#pp" fill="#d93a3a"/><circle cy="-12" r="7" fill="#fff"/></g></g>
+              <g transform="translate(650 320)"><g class="pin" style="--k:1"><use href="#pp" fill="#1f56d6"/><circle cy="-12" r="7" fill="#fff"/></g></g>
+              <g transform="translate(850 420)"><g class="pin" style="--k:2"><use href="#pp" fill="#7a3fd0"/><circle cy="-12" r="7" fill="#fff"/></g></g>
+              <g transform="translate(730 460)"><g class="pin" style="--k:3"><use href="#pp" fill="#d98a0c"/><circle cy="-12" r="7" fill="#fff"/></g></g>
+              <g transform="translate(700 630)"><g class="pin" style="--k:4"><use href="#pp" fill="#0f9e6a"/><circle cy="-12" r="7" fill="#fff"/></g></g>
+              <g transform="translate(810 640)"><g class="pin" style="--k:5"><use href="#pp" fill="#1f56d6"/><circle cy="-12" r="7" fill="#fff"/></g></g>
+            </g>
           </g>
-          <use href="#pin" x="340" y="130" fill="#2563eb"/><use href="#pin" x="410" y="110" fill="#ef4444"/>
-          <use href="#pin" x="370" y="215" fill="#f59e0b"/><use href="#pin" x="436" y="205" fill="#8b5cf6"/>
-          <use href="#pin" x="345" y="300" fill="#10b981"/><use href="#pin" x="412" y="320" fill="#2563eb"/>
-          <circle cx="340" cy="109" r="4" fill="#fff"/><circle cx="410" cy="89" r="4" fill="#fff"/><circle cx="370" cy="194" r="4" fill="#fff"/><circle cx="436" cy="184" r="4" fill="#fff"/><circle cx="345" cy="279" r="4" fill="#fff"/><circle cx="412" cy="299" r="4" fill="#fff"/>
         </g>
       </svg>
+      <div class="badge">Clean<br>Greener<br>Safer</div>
     </div>
   </section>
 
-
-  <!-- HOW IT WORKS -->
-  <section class="lp-how" id="how">
+  <section class="how" id="how">
+    <i class="bar"></i>
     <h2>How It Works</h2>
-    <div class="lp-steps">
-      <div><span class="ic b">📸</span><h3>1. Report</h3><p>Submit an issue with photos and location.</p></div>
-      <div><span class="ic b">🔍</span><h3>2. Track</h3><p>Get real-time updates on progress.</p></div>
-      <div><span class="ic b">🤝</span><h3>3. Collaborate</h3><p>Community &amp; admin work together.</p></div>
-      <div><span class="ic b">🌱</span><h3>4. Better Tomorrow</h3><p>A cleaner, safer and stronger community.</p></div>
+    <div class="steps">
+      <div class="step" style="--i:0"><span class="ic">📸</span><h3>Snap it</h3><p>Take a photo of a pothole, broken light or overflowing drain right from your phone.</p></div>
+      <div class="step" style="--i:1"><span class="ic">📍</span><h3>Pin it</h3><p>Drop a map pin so the municipal crew knows exactly where to go.</p></div>
+      <div class="step" style="--i:2"><span class="ic">⚡</span><h3>Track it</h3><p>Follow your report from New to Assigned, In Progress and Closed.</p></div>
     </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="lp-feats" id="features">
-    <h2>Everything you need to get it fixed</h2>
-    <div class="lp-fgrid">
-      <div class="fc"><span class="ic g">📍</span><h3>Live map pinning</h3><p>Drop an exact GPS pin so repair crews know precisely where to go.</p></div>
-      <div class="fc"><span class="ic o">🔔</span><h3>Status updates</h3><p>Follow every report from New to Assigned, In Progress and Closed.</p></div>
-      <div class="fc"><span class="ic p">🏛️</span><h3>Municipal console</h3><p>Staff manage, assign and close tickets from one clear dashboard.</p></div>
-    </div>
-  </section>
-
-  <section class="lp-band">
-    <h2>Ready to improve your neighbourhood?</h2>
-    <p>Join your community and report your first issue in under a minute.</p>
-    <button type="button" class="lp-btn white" id="bandBtn">Get Started <span>→</span></button>
   </section>
 </main>
 
-<footer class="lp-foot" id="contact">
-  <a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt=""><span>Community Issue Reporter</span></a>
-  <span>© 2026 CivicFix &nbsp;·&nbsp; <a href="#" class="legal">Privacy</a> &nbsp;·&nbsp; <a href="#" class="legal">Terms of Service</a> &nbsp;·&nbsp; <a href="#" class="legal">Support</a></span>
-</footer>
-</div>
+<button class="tt" id="tt" aria-label="Toggle theme">🌞</button>
 
-
-<!-- SIGN IN MODAL (unchanged) -->
-<div class="modal" id="loginModal">
-  <div class="modal-card" style="max-width: 440px;">
-    <div class="modal-head">
-      <div>
-        <h2 id="authTitle">Welcome back</h2>
-        <p class="small muted" style="margin:0" id="authSub">Sign in to report an issue or manage your ward.</p>
-      </div>
-      <button class="modal-x" data-close type="button">&#10005;</button>
-    </div>
-    <div class="modal-body">
-      <div class="alert" id="loginAlert"></div>
-      <button class="auth-google" id="googleBtn" type="button" style="width:100%; margin-bottom: 1rem;">
-        <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
-          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-          <path fill="#FBBC05" d="M10.53 28.59A14.5 14.5 0 0 1 9.77 24c0-1.6.27-3.14.76-4.59l-7.98-6.19A23.94 23.94 0 0 0 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.46-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-        </svg>
-Continue with Google
-      </button>
-      <div class="auth-divider">OR</div>
-      <form id="emailForm" novalidate>
-        <div class="field hidden" id="fName">
-          <label for="fullName">Full name</label>
-          <input class="input" type="text" id="fullName" placeholder="Your name" autocomplete="name" maxlength="60">
-        </div>
-        <div class="field" id="fEmail">
-          <label for="email">Email address</label>
-          <input class="input" type="email" id="email" placeholder="you@example.com" autocomplete="email">
-          <div class="error-text">Enter a valid email address.</div>
-        </div>
-        <div class="field" id="fPass">
-          <label for="password">Password</label>
-          <input class="input" type="password" id="password" placeholder="••••••••" autocomplete="current-password">
-          <div class="error-text">Password must be at least 6 characters.</div>
-        </div>
-        <div class="link-row"><a href="#" id="forgotLink" class="small">Forgot password?</a></div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit" id="signInBtn">Sign in</button>
-      </form>
-      <p class="center small muted" style="margin-top:1.1rem">
-        <span id="switchText">New to CivicFix?</span> <a href="#" id="createLink">Create an account</a>
-      </p>
-      <div class="auth-legal">
-        <a href="#" class="legal">Terms of Service</a>
-        <a href="#" class="legal">Privacy Policy</a>
-        <a href="#" class="legal">Support</a>
-      </div>
-    </div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="card" id="card">
+    <button class="x" type="button" data-close aria-label="Close">✕</button>
+    <div class="mlogo st" style="--d:0">📍</div>
+    <h3 class="st" id="mt" style="--d:1">Welcome back</h3>
+    <p class="lead st" id="ms" style="--d:2">Sign in to report an issue or manage your ward.</p>
+    <div class="alert" id="al"></div>
+    <button class="g st" type="button" id="gb" style="--d:3">
+      <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59A14.5 14.5 0 0 1 9.77 24c0-1.6.27-3.14.76-4.59l-7.98-6.19A23.94 23.94 0 0 0 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.46-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      Continue with Google
+    </button>
+    <div class="or st" style="--d:4">or</div>
+    <form id="form" novalidate>
+      <div class="nm"><div><div class="f"><label for="nm">Full name</label><input class="in" id="nm" placeholder="Your name" autocomplete="name" maxlength="60"></div></div></div>
+      <div class="f st" id="fe" style="--d:5"><label for="em">Email address</label><input class="in" type="email" id="em" placeholder="you@example.com" autocomplete="email"><div class="err"><span>Enter a valid email address.</span></div></div>
+      <div class="f st" id="fp" style="--d:6"><label for="pw">Password</label><div class="pw"><input class="in" type="password" id="pw" placeholder="••••••••" autocomplete="current-password"><button type="button" id="eye">Show</button></div><div class="err"><span>Password must be at least 6 characters.</span></div></div>
+      <div class="row st" id="fg" style="--d:7"><a href="#" id="fgl">Forgot password?</a></div>
+      <button class="btn go shine st" type="submit" id="sb" style="--d:8">Sign in</button>
+    </form>
+    <p class="sw st" style="--d:9"><span id="swt">New to Community Issue Reporter?</span> <a href="#" id="swl">Create an account</a></p>
   </div>
 </div>
+<div class="toasts" id="toasts"></div>
 
 <div class="toast-wrap"></div>
-
-<script src="theme-toggle.js"></script>
 <script src="config.js"></script>
 <script src="app.js"></script>
-<script>
-(function () {
-  var mode = "signin"; // "signin" | "signup"
-  var googleBtn = CF.$("#googleBtn");
-  var googleHtml = googleBtn.innerHTML;
-  var signInBtn = CF.$("#signInBtn");
-
-  CF.wireModals();
-  function openLogin() { CF.openModal("loginModal"); }
-  CF.$("#openLoginModalBtn").addEventListener("click", openLogin);
-  CF.$("#heroSignInBtn").addEventListener("click", openLogin);
-  CF.$("#ctaSignInBtn").addEventListener("click", openLogin);
-
-  CF.init().catch(function () {});
-
-  document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "light");
-
-  function showAlert(msg) {
-    var a = CF.$("#loginAlert");
-    if (!msg) { a.classList.remove("show"); return; }
-    a.textContent = msg;
-    a.classList.add("show");
-  }
-  function resetButtons() {
-    googleBtn.disabled = false;
-    googleBtn.innerHTML = googleHtml;
-    signInBtn.disabled = false;
-    signInBtn.textContent = mode === "signup" ? "Create account" : "Sign in";
-  }
-  function go(session) {
-    CF.toast("ok", "Signed in", session.role === "staff" ? "Opening the municipal console\u2026" : "Opening your dashboard\u2026");
-    setTimeout(function () {
-      CF.navigate(session.role === "staff" ? "admin.html" : "dashboard.html");
-    }, 450);
-  }
-  function fail(err) {
-    resetButtons();
-    var msg = (err && err.status) ? CF.errText(err) : CF.authMessage(err);
-    if (msg) { showAlert(msg); }
-  }
-
-  function setMode(next) {
-    mode = next;
-    var up = mode === "signup";
-    CF.$("#authTitle").textContent = up ? "Create your account" : "Welcome back";
-    CF.$("#authSub").textContent = up ? "Join CivicFix to report and track issues in your area."
-      : "Sign in to report an issue or manage your ward.";
-    CF.$("#fName").classList.toggle("hidden", !up);
-    CF.$("#password").setAttribute("autocomplete", up ? "new-password" : "current-password");
-    CF.$("#forgotLink").classList.toggle("hidden", up);
-    CF.$("#switchText").textContent = up ? "Already have an account?" : "New to CivicFix?";
-    CF.$("#createLink").textContent = up ? "Sign in" : "Create an account";
-    signInBtn.textContent = up ? "Create account" : "Sign in";
-    showAlert("");
-  }
-  CF.$("#createLink").addEventListener("click", function (e) {
-    e.preventDefault();
-    setMode(mode === "signin" ? "signup" : "signin");
-  });
-
-  googleBtn.addEventListener("click", function () {
-    showAlert("");
-    googleBtn.disabled = true;
-    googleBtn.innerHTML = '<span class="spinner dark"></span> Connecting to Google\u2026';
-    CF.signInGoogle().then(go).catch(fail);
-  });
-
-  CF.$("#emailForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    var email = CF.$("#email").value.trim();
-    var pass = CF.$("#password").value;
-    var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    var okPass = pass.length >= 6;
-    CF.$("#fEmail").classList.toggle("invalid", !okEmail);
-    CF.$("#fPass").classList.toggle("invalid", !okPass);
-    if (!okEmail || !okPass) {
-      showAlert("Please fix the highlighted fields and try again.");
-      return;
-    }
-    showAlert("");
-    signInBtn.disabled = true;
-    signInBtn.innerHTML = '<span class="spinner"></span> ' + (mode === "signup" ? "Creating account\u2026" : "Signing in\u2026");
-    var job = mode === "signup"
-      ? CF.signUpEmail(CF.$("#fullName").value.trim(), email, pass)
-      : CF.signInEmail(email, pass);
-    job.then(go).catch(fail);
-  });
-
-  CF.$("#forgotLink").addEventListener("click", function (e) {
-    e.preventDefault();
-    var email = CF.$("#email").value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      CF.$("#fEmail").classList.add("invalid");
-      showAlert("Enter your email address above, then click \u201CForgot password?\u201D again.");
-      return;
-    }
-    showAlert("");
-    CF.resetPassword(email)
-      .then(function () { CF.toast("ok", "Check your inbox", "If an account exists, a reset link is on its way."); })
-      .catch(function (err) { showAlert(CF.authMessage(err)); });
-  });
-
-  CF.$$(".legal").forEach(function (el) {
-    el.addEventListener("click", function (e) {
-      e.preventDefault();
-      CF.toast("", "Legal", "Terms, privacy and support pages are placeholders in this build.");
-    });
-  });
-
-  if (!CF.firebaseConfigured()) {
-    showAlert("Firebase is not configured yet. Fill in config.js with your project's web config.");
-    return;
-  }
-  CF.loadSession().then(function (s) { if (s) { go(s); } })
-    .catch(function (err) { showAlert(CF.errText(err)); });
-})();
-</script>
-<script>
-(function(){
-  var c=document.getElementById("createLink");
-  document.getElementById("ctaSignInBtn").addEventListener("click",function(){ if(c.textContent.indexOf("Create")>-1){c.click();} });
-  document.getElementById("bandBtn").addEventListener("click",function(){ document.getElementById("heroSignInBtn").click(); });
-})();
-</script>
-<script>
-(function () {
-  var els = document.querySelectorAll(".rv");
-  if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("in"); }); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
-    });
-  }, { threshold: 0.15 });
-  els.forEach(function (e) { io.observe(e); });
-})();
-</script>
+<script src="landing.js"></script>
 </body>
 </html>
