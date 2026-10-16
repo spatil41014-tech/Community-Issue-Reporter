@@ -12,108 +12,121 @@
 </head>
 <body class="lp">
 
-<!-- FLOATING PILL NAVBAR -->
+<div class="lp-shell">
+<!-- NAVBAR -->
 <nav class="lp-nav">
-  <a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt="CivicFix logo"><span>CivicFix</span></a>
+  <a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt="CivicFix logo"><span>Community Issue Reporter</span></a>
   <div class="lp-links">
-    <a href="#how">How it works</a>
-    <a href="#features">Features</a>
-    <a href="#faq">FAQ</a>
+    <a href="#top">Home</a><a href="about.html">About</a><a href="#features">Features</a><a href="#how">How It Works</a><a href="#contact">Contact</a>
   </div>
-  <button type="button" class="lp-btn blue sm" id="openLoginModalBtn">Login</button>
+  <div class="lp-auth">
+    <button type="button" class="lp-btn line sm" id="openLoginModalBtn">Login</button>
+    <button type="button" class="lp-btn blue sm" id="ctaSignInBtn">Sign Up</button>
+  </div>
 </nav>
 
-<main>
+<main id="top">
   <!-- HERO -->
   <section class="lp-hero">
-    <div class="lp-wrap">
-      <h1>Spot a problem on your street.<span>See it get fixed.</span></h1>
-      <p>Snap a photo, drop a pin, and follow every report from New to Closed. CivicFix connects citizens with municipal repair crews.</p>
+    <div class="lp-copy">
+      <h1>Stronger Communities<br>Start with <em>You</em></h1>
+      <p>Report local issues, track progress, and help make your community a better place.</p>
       <div class="lp-cta">
-        <button type="button" class="lp-btn blue" id="heroSignInBtn">Report an issue</button>
-        <a href="#how" class="lp-btn soft">See how it works</a>
+        <button type="button" class="lp-btn blue" id="heroSignInBtn">Report an Issue <span>→</span></button>
+        <a href="#how" class="lp-btn white">Learn More</a>
       </div>
-      <div class="lp-trust">
-        <span><i>✓</i>Live GPS map pinning</span>
-        <span><i>✓</i>Transparent status tracking</span>
-      </div>
+    </div>
 
-      <!-- product preview -->
-      <div class="lp-stage">
-        <div class="lp-win">
-          <div class="lp-side"><b>◎ Dashboard</b><span>My reports</span><span>Map view</span><span>Notifications</span></div>
-          <div class="lp-main">
-            <h4>Overview <small>Sample ward · Last 30 days</small></h4>
-            <div class="lp-grid">
-              <div class="lp-map"></div>
-              <div class="lp-list">
-                <div class="lp-row">Pothole on MG Road <span class="chip n">New</span></div>
-                <div class="lp-row">Streetlight out, Sector 4 <span class="chip a">Assigned</span></div>
-                <div class="lp-row">Drain overflow near market <span class="chip p">In Progress</span></div>
-                <div class="lp-row">Broken footpath tile <span class="chip c">Closed</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="lp-art">
+      <div class="lp-bubble">Clean<br>Greener<br>Safer</div>
+      <svg viewBox="0 0 560 420" role="img" aria-label="Phone showing a map of reported issues in a green city">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ec5f5"/><stop offset="1" stop-color="#e3f2fd"/></linearGradient>
+          <linearGradient id="bd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b9bd5"/><stop offset="1" stop-color="#bcdcf7"/></linearGradient>
+          <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fd0f0"/><stop offset="1" stop-color="#3b9ad9"/></linearGradient>
+          <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5cc06a"/><stop offset="1" stop-color="#2e8b4a"/></linearGradient>
+          <pattern id="win" width="9" height="11" patternUnits="userSpaceOnUse"><rect x="1" y="2" width="6" height="6" fill="#fff" opacity=".4"/></pattern>
+          <path id="pin" d="M0 0C-9-11-11-15-11-21a11 11 0 0 1 22 0C11-15 9-11 0 0z"/>
+        </defs>
+        <rect width="560" height="420" rx="24" fill="url(#bg)"/>
+        <circle cx="90" cy="70" r="60" fill="#fff" opacity=".35"/><circle cx="450" cy="50" r="40" fill="#fff" opacity=".3"/>
+        <!-- skyline -->
+        <g fill="url(#bd)">
+          <rect x="40" y="200" width="42" height="130"/><rect x="92" y="160" width="50" height="170"/>
+          <rect x="150" y="110" width="46" height="220"/><rect x="204" y="180" width="40" height="150"/>
+          <rect x="250" y="140" width="36" height="190"/><rect x="340" y="190" width="60" height="140"/>
+        </g>
+        <g fill="url(#win)"><rect x="40" y="200" width="42" height="130"/><rect x="92" y="160" width="50" height="170"/><rect x="150" y="110" width="46" height="220"/><rect x="204" y="180" width="40" height="150"/><rect x="250" y="140" width="36" height="190"/></g>
+        <!-- lake + ground -->
+        <path d="M0 318C90 300 180 332 280 318S470 300 560 322V420H0z" fill="url(#lake)"/>
+        <path d="M0 322C100 312 190 338 290 326S480 310 560 330" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none"/>
+        <!-- trees -->
+        <g>
+          <rect x="454" y="262" width="8" height="60" fill="#7a5230"/><circle cx="458" cy="238" r="38" fill="url(#tr)"/><circle cx="486" cy="262" r="28" fill="#3fa356"/>
+          <rect x="508" y="280" width="7" height="44" fill="#7a5230"/><circle cx="511" cy="262" r="30" fill="url(#tr)"/>
+          <rect x="22" y="290" width="7" height="34" fill="#7a5230"/><circle cx="26" cy="276" r="24" fill="url(#tr)"/>
+        </g>
+        <!-- phone -->
+        <g transform="rotate(-4 380 215)">
+          <rect x="296" y="34" width="176" height="340" rx="28" fill="#0f172a"/>
+          <rect x="304" y="42" width="160" height="324" rx="22" fill="#eef6ea"/>
+          <rect x="350" y="46" width="68" height="9" rx="4.5" fill="#0f172a"/>
+          <g clip-path="inset(0 round 22px)">
+            <path d="M304 150C350 170 380 130 464 170V230C400 200 350 250 304 220z" fill="#bfe3f7"/>
+            <rect x="320" y="70" width="46" height="40" rx="6" fill="#cfe9c3"/><rect x="400" y="250" width="50" height="46" rx="6" fill="#cfe9c3"/><rect x="318" y="270" width="52" height="60" rx="6" fill="#d9ecd0"/>
+            <g stroke="#fff" stroke-width="6" fill="none"><path d="M304 100H464M304 300H464M380 42V366M330 42V366M430 42V366"/></g>
+          </g>
+          <use href="#pin" x="340" y="130" fill="#2563eb"/><use href="#pin" x="410" y="110" fill="#ef4444"/>
+          <use href="#pin" x="370" y="215" fill="#f59e0b"/><use href="#pin" x="436" y="205" fill="#8b5cf6"/>
+          <use href="#pin" x="345" y="300" fill="#10b981"/><use href="#pin" x="412" y="320" fill="#2563eb"/>
+          <circle cx="340" cy="109" r="4" fill="#fff"/><circle cx="410" cy="89" r="4" fill="#fff"/><circle cx="370" cy="194" r="4" fill="#fff"/><circle cx="436" cy="184" r="4" fill="#fff"/><circle cx="345" cy="279" r="4" fill="#fff"/><circle cx="412" cy="299" r="4" fill="#fff"/>
+        </g>
+      </svg>
     </div>
   </section>
 
+  <!-- STATS -->
+  <section class="lp-stats">
+    <div class="stat"><span class="ic b">📋</span><div><b data-n="128">128</b><small>Total Issues Reported</small></div></div>
+    <div class="stat"><span class="ic g">✔</span><div><b data-n="86">86</b><small>Resolved Issues</small></div></div>
+    <div class="stat"><span class="ic o">⏳</span><div><b data-n="24">24</b><small>In Progress</small></div></div>
+    <div class="stat"><span class="ic p">👥</span><div><b data-n="540">540</b><small>Active Members</small></div></div>
+  </section>
+
   <!-- HOW IT WORKS -->
-  <section class="lp-sec" id="how">
-    <div class="lp-wrap">
-      <div class="lp-eyebrow">How it works</div>
-      <h2>From snapshot to solved.</h2>
-      <div class="lp-cards">
-        <div class="lp-card"><div class="art b">📸</div><small>Step 1</small><h3>Snap it</h3><p>Take a photo of any civic issue straight from your phone camera or gallery.</p></div>
-        <div class="lp-card"><div class="art y">📍</div><small>Step 2</small><h3>Post &amp; pin</h3><p>Drop an exact GPS map pin so municipal field crews know precisely where to go.</p></div>
-        <div class="lp-card"><div class="art g">⚡</div><small>Step 3</small><h3>Track to fix</h3><p>Follow ticket updates live from New to Assigned, In Progress, and Closed.</p></div>
-      </div>
+  <section class="lp-how" id="how">
+    <h2>How It Works</h2>
+    <div class="lp-steps">
+      <div><span class="ic b">📸</span><h3>1. Report</h3><p>Submit an issue with photos and location.</p></div>
+      <div><span class="ic b">🔍</span><h3>2. Track</h3><p>Get real-time updates on progress.</p></div>
+      <div><span class="ic b">🤝</span><h3>3. Collaborate</h3><p>Community &amp; admin work together.</p></div>
+      <div><span class="ic b">🌱</span><h3>4. Better Tomorrow</h3><p>A cleaner, safer and stronger community.</p></div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section class="lp-sec" id="features">
-    <div class="lp-wrap">
-      <div class="lp-eyebrow">Features</div>
-      <h2>Built for your whole neighbourhood.</h2>
-      <div class="lp-feat">
-        <div class="box"><span class="tag">CITIZENS</span><h3>Report in seconds</h3><p>Potholes, drainage overflows, streetlights and urban hazards — all in one quick form.</p></div>
-        <div class="box"><span class="tag">MUNICIPAL CREWS</span><h3>Know where to go</h3><p>Every ticket arrives with a photo and an exact location, so crews can act faster.</p></div>
-        <div class="box"><span class="tag">TRANSPARENCY</span><h3>See every update</h3><p>Status changes are visible to everyone, so no report gets lost along the way.</p></div>
-      </div>
+  <section class="lp-feats" id="features">
+    <h2>Everything you need to get it fixed</h2>
+    <div class="lp-fgrid">
+      <div class="fc"><span class="ic g">📍</span><h3>Live map pinning</h3><p>Drop an exact GPS pin so repair crews know precisely where to go.</p></div>
+      <div class="fc"><span class="ic o">🔔</span><h3>Status updates</h3><p>Follow every report from New to Assigned, In Progress and Closed.</p></div>
+      <div class="fc"><span class="ic p">🏛️</span><h3>Municipal console</h3><p>Staff manage, assign and close tickets from one clear dashboard.</p></div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="lp-sec" id="faq">
-    <div class="lp-wrap">
-      <div class="lp-eyebrow">FAQ</div>
-      <h2>Good questions. Clear answers.</h2>
-      <div class="lp-faq">
-        <details open><summary>How do I report an issue?</summary><p>Sign in, snap a photo, drop a pin on the map and submit. Your report goes straight to the municipal team.</p></details>
-        <details><summary>Can I track my report?</summary><p>Yes. Each report moves through New, Assigned, In Progress and Closed, and you can follow it from your dashboard.</p></details>
-        <details><summary>Do I need an account?</summary><p>You can continue with Google or use an email and password. It only takes a moment.</p></details>
-      </div>
-
-      <div class="lp-band">
-        <small>SMALL REPORT. BIG DIFFERENCE.</small>
-        <h2>Your next fix starts with a photo.</h2>
-        <button type="button" class="lp-btn" id="ctaSignInBtn">Get started free</button>
-      </div>
-
-      <footer>
-        <div class="lp-foot">
-          <div><a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt=""><span>CivicFix</span></a>
-            <p style="color:var(--lp-mute);margin-top:14px">A cleaner street.<br>From first report to final fix.</p></div>
-          <div class="col"><h5>PRODUCT</h5><a href="#how">How it works</a><a href="#features">Features</a><a href="#faq">FAQ</a></div>
-          <div class="col"><h5>RESOURCES</h5><a href="about.html">About</a><a href="#" class="legal">Support</a></div>
-        </div>
-        <div class="lp-copy"><span>© 2026 CivicFix</span><span><a href="#" class="legal">Privacy</a> &nbsp; <a href="#" class="legal">Terms of Service</a></span></div>
-      </footer>
-    </div>
+  <section class="lp-band">
+    <h2>Ready to improve your neighbourhood?</h2>
+    <p>Join your community and report your first issue in under a minute.</p>
+    <button type="button" class="lp-btn white" id="bandBtn">Get Started <span>→</span></button>
   </section>
 </main>
+
+<footer class="lp-foot" id="contact">
+  <a class="lp-brand" href="index.html"><img src="assets/civicfix-logo.svg" alt=""><span>Community Issue Reporter</span></a>
+  <span>© 2026 CivicFix &nbsp;·&nbsp; <a href="#" class="legal">Privacy</a> &nbsp;·&nbsp; <a href="#" class="legal">Terms of Service</a> &nbsp;·&nbsp; <a href="#" class="legal">Support</a></span>
+</footer>
+</div>
+
 
 <!-- SIGN IN MODAL (unchanged) -->
 <div class="modal" id="loginModal">
@@ -286,6 +299,18 @@ Continue with Google
   }
   CF.loadSession().then(function (s) { if (s) { go(s); } })
     .catch(function (err) { showAlert(CF.errText(err)); });
+})();
+</script>
+<script>
+(function(){
+  var c=document.getElementById("createLink");
+  document.getElementById("ctaSignInBtn").addEventListener("click",function(){ if(c.textContent.indexOf("Create")>-1){c.click();} });
+  document.getElementById("bandBtn").addEventListener("click",function(){ document.getElementById("heroSignInBtn").click(); });
+  document.querySelectorAll("[data-n]").forEach(function(el){
+    var end=+el.dataset.n,t0=null;
+    function step(t){t0=t0||t;var p=Math.min((t-t0)/1200,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  });
 })();
 </script>
 </body>
